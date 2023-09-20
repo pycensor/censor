@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "censor"
-description = "censor without the reinforcement"
+description = "reinforcement degrades performance"
 version = "3"
 authors = [
     {name = "Censor", email = "pycensor@gmail.com" },
@@ -24,3 +24,6 @@ classifiers = [
 "home" = "https://pypi.org/project/censor"
 "bugs" = "https://github.com/pycensor/censor/issues"
 "source" = "https://github.com/pycensor/censor"
+
+[project.scripts]
+censor = "censor.__main__:wrapped"

@@ -10,15 +10,15 @@
 
 def parse(obj, txt=None) -> None:
     args = []
-    obj.args = []
-    obj.cmd = ""
-    obj.gets = {}
-    obj.hasmods = False
-    obj.mod = ""
-    obj.opts = ""
-    obj.result = []
-    obj.sets = {}
-    obj.otxt = txt
+    obj.args = obj.args or []
+    obj.cmd = obj.cmd or ""
+    obj.gets = obj.gets or {}
+    obj.hasmods = obj.hasmod or False
+    obj.mod = obj.mod or ""
+    obj.opts = obj.opts or ""
+    obj.result = obj.reult or []
+    obj.sets = obj.sets or {}
+    obj.otxt = txt or obj.txt or ""
     _nr = -1
     for spli in obj.otxt.split():
         if spli.startswith("-"):

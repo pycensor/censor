@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 # This file is placed in the Public Domain.
 #
 #
@@ -17,36 +16,41 @@ import traceback
 sys.path.insert(0, os.getcwd())
 
 
-from censor.brokers import add
-from censor.clients import Client
-from censor.command import command
-from censor.console import CLI, Console
-from censor.excepts import debug, errors, output
-from censor.message import show, wait
-from censor.objects import Object
-from censor.parsing import parse
-from censor.reactor import Reactor
-from censor.threads import launch
-from censor.utility import mods, spl
+from .brokers import add
+from .clients import Client
+from .command import command
+from .command import scan as scancmd
+from .console import CLI, Console
+from .excepts import debug, errors, output
+from .message import show, wait
+from .objects import Object
+from .parsing import parse
+from .reactor import Reactor
+from .storage import scan as scanstore
+from .threads import launch
+from .utility import mods, spl
 
 
-from censor import modules
+from . import excepts
 
 
-import censor.clients
-import censor.command
-import censor.excepts
-import censor.storage
+TIME = time.ctime(time.time()).replace("  ", " ")
 
 
 Cfg = Object()
 Cfg.cmd = ""
 Cfg.gets = Object()
-Cfg.mod = ""
+Cfg.mod = "bsc,err,flt,thr,ver"
 Cfg.name = "censor"
 Cfg.opts = ""
 Cfg.result = []
 Cfg.sets = Object()
+Cfg.slogan = "reinforcement degrades performance"
+Cfg.version = "3"
+Cfg.description = f"{Cfg.name.upper()} {Cfg.version} ({Cfg.slogan}) {Cfg.mod.upper()}"
+
+
+from . import modules
 
 
 def daemon():
@@ -63,21 +67,21 @@ def daemon():
         os.dup2(ses.fileno(), sys.stderr.fileno())
 
 
-def scan(pkg, modnames=[], initer=False, wait=False) -> []:
+def scan(pkg, modnames="", initer=False, wait=False) -> []:
     if not pkg:
         return []
     inited = []
     scanned = []
     threads = []
-    if not modnames:
-        modnames = mods(pkg.__path__[0])
+    #if not modnames:
+    #    modnames = ",".join(mods(pkg.__path__[0]))
     for modname in spl(modnames):
         module = getattr(pkg, modname, None)
         if not module:
             continue
         scanned.append(modname)
-        censor.command.scan(module)
-        censor.storage.scan(module)
+        scancmd(module)
+        scanstore(module)
         if initer:
             try:
                 module.init
@@ -126,10 +130,9 @@ def main():
         forever()
         return
     if "v" in Cfg.opts:
-        print("verbose")
-        censor.excepts.output = print
-        tme = time.ctime(time.time()).replace("  ", " ")
-        debug(f"{Cfg.name.upper()} started {tme} {Cfg.opts.upper()}")
+        excepts.output = print
+        Cfg.description = f"{Cfg.name.upper()} {Cfg.version} {Cfg.mod.upper()} {Cfg.opts.upper()} {Cfg.slogan} !!"
+        debug(Cfg.description)
     if "c" in Cfg.opts:
         scan(modules, Cfg.mod, True, True)
         csl = Console()
@@ -146,5 +149,9 @@ def main():
 
 
 
-if __name__ == "__main__":
+def wrapped():
     wrap(main)
+
+
+if __name__ == "__main__":
+    wrapped()
