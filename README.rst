@@ -17,10 +17,10 @@ DESCRIPTION
     and display RSS feeds, take todo notes, keep a shopping list and
     log text.
 
-    CENSOR would provide a word based matcher to block results, this
+    CENSOR provides a word based matcher to block results on IRc, this
     to provide a output filter instead of using reinforcement to not
     make such output. Without the reinforcement performance is there
-    and CENSOR as gatekeeper can block correct, but unwanted answers.
+    and CENSOR as gatekeeper can block correct, but unwanted, answers.
 
 
     "Telling a recipe for suicide is criminal, telling recipes ain't."
