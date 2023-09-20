@@ -2,7 +2,7 @@ NAME
 
 ::
 
-   CENSOR - censorship without the reinforcement learning
+   CENSOR - censor without the reinforcement 
 
 
 DESCRIPTION
@@ -17,6 +17,8 @@ DESCRIPTION
     CENSOR provides some functionality, it can connect to IRC, fetch
     and display RSS feeds, take todo notes, keep a shopping list and
     log text.
+
+    CENSOR is an attempt to provide censoring without reinforcing.
 
 
 SYNOPSIS
@@ -164,7 +166,7 @@ AUTHOR
 
 ::
 
-    Bart Thate <bthate@dds.nl>
+    Censor <pycensor@gmail.com>
 
 
 COPYRIGHT

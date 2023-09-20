@@ -4,10 +4,10 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "censor"
-description = "censorship without the reinforcement learning"
-version = "2"
+description = "censor without the reinforcement"
+version = "3"
 authors = [
-    {name = "Bart Thate", email = "bthate@dds.nl" },
+    {name = "Censor", email = "pycensor@gmail.com" },
 ]
 readme = "README.rst"
 license = { text="Public Domain"}
@@ -22,5 +22,5 @@ classifiers = [
 
 [project.urls]
 "home" = "https://pypi.org/project/censor"
-"bugs" = "https://github.com/bthate/censor/issues"
-"source" = "https://github.com/bthate/censor"
+"bugs" = "https://github.com/pycensor/censor/issues"
+"source" = "https://github.com/pycensor/censor"
