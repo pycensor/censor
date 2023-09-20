@@ -152,7 +152,7 @@ SYSTEMD
     Group=censor
     PIDFile=censor.pid
     WorkingDirectory=/home/censor/.censor
-    ExecStart=/home/bart/.local/pipx/venvs/censor/bin/censor mod=irc,rss,mdl -d
+    ExecStart=/home/censor/.local/pipx/venvs/censor/bin/censor mod=irc,rss,mdl -d
     RemainAfterExit=yes
 
     [Install]
