@@ -43,8 +43,8 @@ Cfg.opts = ""
 Cfg.result = []
 Cfg.sets = Object()
 Cfg.slogan = "reinforcement degrades performance"
-Cfg.version = "3"
-Cfg.description = f"{Cfg.name.upper()} {Cfg.version} ({Cfg.slogan}) {Cfg.mod.upper()}"
+Cfg.version = "4"
+Cfg.description = f"{Cfg.name.upper()} {Cfg.version} {Cfg.mod.upper()} {Cfg.slogan}"
 
 
 from . import modules
