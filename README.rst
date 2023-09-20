@@ -141,7 +141,7 @@ SYSTEMD
 ::
 
     [Unit]
-    Description=reinforcement degrades performance
+    Description=Reinforcement degrades performance.
     Requires=network.target
     After=network.target
 
