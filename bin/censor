@@ -1,0 +1,150 @@
+#!/usr/bin/env python3
+# This file is placed in the Public Domain.
+#
+#
+
+
+"main"
+
+
+import os
+import sys
+import termios
+import time
+import traceback
+
+
+sys.path.insert(0, os.getcwd())
+
+
+from censor.brokers import add
+from censor.clients import Client
+from censor.command import command
+from censor.console import CLI, Console
+from censor.excepts import debug, errors, output
+from censor.message import show, wait
+from censor.objects import Object
+from censor.parsing import parse
+from censor.reactor import Reactor
+from censor.threads import launch
+from censor.utility import mods, spl
+
+
+from censor import modules
+
+
+import censor.clients
+import censor.command
+import censor.excepts
+import censor.storage
+
+
+Cfg = Object()
+Cfg.cmd = ""
+Cfg.gets = Object()
+Cfg.mod = ""
+Cfg.name = "censor"
+Cfg.opts = ""
+Cfg.result = []
+Cfg.sets = Object()
+
+
+def daemon():
+    pid = os.fork()
+    if pid != 0:
+        os._exit(0)
+    os.setsid()
+    os.umask(0)
+    with open('/dev/null', 'r', encoding="utf-8") as sis:
+        os.dup2(sis.fileno(), sys.stdin.fileno())
+    with open('/dev/null', 'a+', encoding="utf-8") as sos:
+        os.dup2(sos.fileno(), sys.stdout.fileno())
+    with open('/dev/null', 'a+', encoding="utf-8") as ses:
+        os.dup2(ses.fileno(), sys.stderr.fileno())
+
+
+def scan(pkg, modnames=[], initer=False, wait=False) -> []:
+    if not pkg:
+        return []
+    inited = []
+    scanned = []
+    threads = []
+    if not modnames:
+        modnames = mods(pkg.__path__[0])
+    for modname in spl(modnames):
+        module = getattr(pkg, modname, None)
+        if not module:
+            continue
+        scanned.append(modname)
+        censor.command.scan(module)
+        censor.storage.scan(module)
+        if initer:
+            try:
+                module.init
+            except AttributeError:
+                continue
+            inited.append(modname)
+            threads.append(launch(module.init, name=f"init {modname}"))
+    if wait:
+        for thread in threads:
+            thread.join()
+    return inited
+
+
+def wrap(func) -> None:
+    if "d" in Cfg.opts:
+        debug("terminal disabled!")
+        return
+    old = None
+    try:
+        old = termios.tcgetattr(sys.stdin.fileno())
+    except termios.error:
+        pass
+    try:
+        func()
+    except (EOFError, KeyboardInterrupt):
+        print("")
+        sys.stdout.flush()
+    finally:
+        if old:
+            termios.tcsetattr(sys.stdin.fileno(), termios.TCSADRAIN, old)
+    for exc in errors:
+        traceback.print_exception(
+                                  type(exc),
+                                  exc,
+                                  exc.__traceback__
+                                 )
+
+
+def main():
+    parse(Cfg, " ".join(sys.argv[1:]))
+    if "a" in Cfg.opts:
+        Cfg.mod = ",".join(mods(modules.__path__[0]))
+    if "d" in Cfg.opts:
+        daemon()
+        scan(modules, Cfg.mod, True)
+        forever()
+        return
+    if "v" in Cfg.opts:
+        print("verbose")
+        censor.excepts.output = print
+        tme = time.ctime(time.time()).replace("  ", " ")
+        debug(f"{Cfg.name.upper()} started {tme} {Cfg.opts.upper()}")
+    if "c" in Cfg.opts:
+        scan(modules, Cfg.mod, True, True)
+        csl = Console()
+        csl.start()
+        csl.forever()
+    else:
+        scan(modules, Cfg.mod)
+        cli = CLI()
+        evt = Object()
+        evt.orig = object.__repr__(cli)
+        evt.txt = Cfg.otxt
+        command(evt)
+        wait(evt)
+
+
+
+if __name__ == "__main__":
+    wrap(main)

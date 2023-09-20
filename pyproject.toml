@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=43.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "censor"
+description = "censorship without the reinforcement learning"
+version = "2"
+authors = [
+    {name = "Bart Thate", email = "bthate@dds.nl" },
+]
+readme = "README.rst"
+license = { text="Public Domain"}
+classifiers = [ 
+               'Development Status :: 3 - Alpha',
+               'License :: Public Domain',
+               'Operating System :: Unix',
+               'Programming Language :: Python',
+               'Topic :: Utilities'
+              ]
+
+
+[project.urls]
+"home" = "https://pypi.org/project/censor"
+"bugs" = "https://github.com/bthate/censor/issues"
+"source" = "https://github.com/bthate/censor"
