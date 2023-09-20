@@ -140,6 +140,8 @@ SYSTEMD
 
 ::
 
+    chache <name> to the user running pipx
+
     [Unit]
     Description=Reinforcement degrades performance.
     Requires=network.target
@@ -147,12 +149,12 @@ SYSTEMD
 
     [Service]
     DynamicUser=True
-    Type=fork
-    User=censor
-    Group=censor
+    Type=forking
+    User=<name>
+    Group=<name>
     PIDFile=censor.pid
-    WorkingDirectory=/home/censor/.censor
-    ExecStart=/home/censor/.local/pipx/venvs/censor/bin/censor mod=irc,rss,mdl -d
+    WorkingDirectory=/home/<name>/.censor
+    ExecStart=/home/<name>/.local/pipx/venvs/censor/bin/censor mod=irc,rss -d
     RemainAfterExit=yes
 
     [Install]

@@ -23,6 +23,7 @@ from .excepts import debug, errors
 from .message import wait
 from .objects import Object
 from .parsing import parse
+from .storage import workdir
 from .storage import scan as scanstore
 from .threads import launch
 from .utility import mods, spl
@@ -37,7 +38,7 @@ TIME = time.ctime(time.time()).replace("  ", " ")
 Cfg = Object()
 Cfg.cmd = ""
 Cfg.gets = Object()
-Cfg.mod = "bsc,err,flt,sts,thr,ver"
+Cfg.mod = "bsc,err,flt,irc,rss,sts,thr,ver"
 Cfg.name = "censor"
 Cfg.opts = ""
 Cfg.result = []
@@ -123,6 +124,9 @@ def main():
         Cfg.mod = ",".join(mods(modules.__path__[0]))
     if "d" in Cfg.opts:
         daemon()
+        with open(os.path.join(workdir, "censor.pid", "w")) as pid:
+            pid.write(os.getpid())
+            pid.close()
         scan(modules, Cfg.mod, True)
         while 1:
             time.sleep(1.0)

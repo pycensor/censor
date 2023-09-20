@@ -8,6 +8,7 @@
 "console"
 
 
+import readline
 import sys
 import threading
 import _thread
