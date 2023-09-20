@@ -9,6 +9,7 @@ DESCRIPTION
 
 
 ::
+    "Telling a recipe for suicide is criminal, telling recipes ain't."
 
     CENSOR is a python3 IRC bot is intended to be programmable in a
     static, only code, no popen, no user imports and no reading
@@ -19,11 +20,10 @@ DESCRIPTION
     log text.
 
     CENSOR would provide a word based matcher to block results, this
-    to provide a output filter instead of use reinforcement to not
+    to provide a output filter instead of using reinforcement to not
     make such output. Without the reinforcement performance is there
-    and CENSOR as gatekeeper can block unwanted, but correct, answers.
+    and CENSOR as gatekeeper can block correct, but unwanted answers.
 
-    Telling a recipe for suicide is criminal, telling recipes ain't.
 
 
 SYNOPSIS
