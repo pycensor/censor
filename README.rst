@@ -143,8 +143,8 @@ SYSTEMD
     [Service]
     DynamicUser=True
     Type=fork
-    User=bart
-    Group=bart
+    User=censor
+    Group=censor
     PIDFile=censor.pid
     WorkingDirectory=/home/bart/.censor
     ExecStart=/home/bart/.local/pipx/venvs/censor/bin/censor mod=irc,rss,mdl -d
