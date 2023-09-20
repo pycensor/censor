@@ -1,6 +1,6 @@
 # This file is placed in the Public Domain.
 #
-#
+# pylint: disable=E0611,E0402,C0301,C0413,C0116,W0212
 
 
 "main"
@@ -16,16 +16,13 @@ import traceback
 sys.path.insert(0, os.getcwd())
 
 
-from .brokers import add
-from .clients import Client
 from .command import command
 from .command import scan as scancmd
 from .console import CLI, Console
-from .excepts import debug, errors, output
-from .message import show, wait
+from .excepts import debug, errors
+from .message import wait
 from .objects import Object
 from .parsing import parse
-from .reactor import Reactor
 from .storage import scan as scanstore
 from .threads import launch
 from .utility import mods, spl
@@ -67,7 +64,7 @@ def daemon():
         os.dup2(ses.fileno(), sys.stderr.fileno())
 
 
-def scan(pkg, modnames="", initer=False, wait=False) -> []:
+def scan(pkg, modnames="", initer=False, dowait=False) -> []:
     if not pkg:
         return []
     inited = []
@@ -89,7 +86,7 @@ def scan(pkg, modnames="", initer=False, wait=False) -> []:
                 continue
             inited.append(modname)
             threads.append(launch(module.init, name=f"init {modname}"))
-    if wait:
+    if dowait:
         for thread in threads:
             thread.join()
     return inited
@@ -127,7 +124,8 @@ def main():
     if "d" in Cfg.opts:
         daemon()
         scan(modules, Cfg.mod, True)
-        forever()
+        while 1:
+            time.sleep(1.0)
         return
     if "v" in Cfg.opts:
         excepts.output = print
