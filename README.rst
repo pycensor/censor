@@ -2,7 +2,7 @@ NAME
 
 ::
 
-   CENSOR - censor without the reinforcement 
+   CENSOR - reinforcement degrades performance
 
 
 DESCRIPTION
@@ -18,7 +18,8 @@ DESCRIPTION
     and display RSS feeds, take todo notes, keep a shopping list and
     log text.
 
-    CENSOR is an attempt to provide censoring without reinforcing.
+
+    "reinforcement degrades perfomance"
 
 
 SYNOPSIS
@@ -135,6 +136,8 @@ SYSTEMD
 
 ::
 
+    replace <name> with the user running pipx
+
     [Unit]
     Description=Object Programming Runtime
     Requires=network.target
@@ -146,7 +149,7 @@ SYSTEMD
     User=censor
     Group=censor
     PIDFile=censor.pid
-    WorkingDirectory=/home/bart/.censor
+    WorkingDirectory=/home/censor/.censor
     ExecStart=/home/bart/.local/pipx/venvs/censor/bin/censor mod=irc,rss,mdl -d
     RemainAfterExit=yes
 
