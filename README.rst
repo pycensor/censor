@@ -18,8 +18,12 @@ DESCRIPTION
     and display RSS feeds, take todo notes, keep a shopping list and
     log text.
 
+    CENSOR would provide a word based matcher to block results, this
+    to provide a output filter instead of use reinforcement to not
+    make such output. Without the reinforcement performance is there
+    and CENSOR as gatekeeper can block unwanted, but correct, answers.
 
-    "reinforcement degrades perfomance"
+    Telling a recipe for suicide is criminal, telling recipes ain't.
 
 
 SYNOPSIS
