@@ -20,6 +20,7 @@ import _thread
 
 from ..brokers import byorig, objs, remove
 from ..caching import cache
+from ..censors import Censor
 from ..clients import Client
 from ..command import command
 from ..excepts import debug, errors
@@ -139,6 +140,8 @@ class Output:
     def out(self):
         while not self.dostop.is_set():
             (channel, txt) = self.oqueue.get()
+            if Censor.doskip(txt):
+                continue
             if channel is None and txt is None:
                 break
             if self.dostop.is_set():
