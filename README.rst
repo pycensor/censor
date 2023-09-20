@@ -7,9 +7,9 @@ NAME
 
 DESCRIPTION
 
+    "Telling a recipe for suicide is criminal, telling recipes ain't."
 
 ::
-    "Telling a recipe for suicide is criminal, telling recipes ain't."
 
     CENSOR is a python3 IRC bot is intended to be programmable in a
     static, only code, no popen, no user imports and no reading
