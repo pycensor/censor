@@ -45,7 +45,7 @@ USAGE
 
     for ease of use, use an alias
 
-    $ alias opr="python3 -m censor"
+    $ alias censor="python3 -m censor"
 
     list of commands
 
