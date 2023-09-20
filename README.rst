@@ -140,10 +140,8 @@ SYSTEMD
 
 ::
 
-    replace <name> with the user running pipx
-
     [Unit]
-    Description=Object Programming Runtime
+    Description=reinforcement degrades performance
     Requires=network.target
     After=network.target
 
