@@ -8,9 +8,9 @@ DynamicUser=True
 Type=forking
 User=bart
 Group=bart
-PIDFile=censor.pid
+PIDFile=/home/bart/.censor/censor.pid
 WorkingDirectory=/home/bart/.censor
-ExecStart=/home/bart/.local/pipx/venvs/censor/bin/censor -d
+ExecStart=/home/bart/.local/pipx/venvs/censor/bin/censor -d mod=irc,rss
 RemainAfterExit=yes
 
 [Install]

@@ -41,6 +41,8 @@ def __dir__():
            ) 
 
 
+PIDFILE = os.path.abspath(os.path.join(workdir, "censor.pid"))
+
 TIME = time.ctime(time.time()).replace("  ", " ")
 
 
@@ -127,20 +129,19 @@ def wrap(func) -> None:
 
 def main():
     parse(Cfg, " ".join(sys.argv[1:]))
+    if "d" in Cfg.opts:
+        daemon()
+        pidfile(PIDFILE)
+        scan(modules, Cfg.mod, True)
+        while 1:
+            time.sleep(1.0)
+        return
     if "a" in Cfg.opts:
         Cfg.mod = ",".join(mods(modules.__path__[0]))
     if "v" in Cfg.opts:
         excepts.output = print
         Cfg.description = f"{Cfg.name.upper()} {Cfg.version} {Cfg.mod.upper()} {Cfg.opts.upper()}\n{Cfg.slogan}"
         debug(Cfg.description)
-    if "d" in Cfg.opts:
-        daemon()
-        pidname = os.path.abspath(os.path.join(workdir, "censor.pid"))
-        pidfile(pidname)
-        scan(modules, Cfg.mod, True)
-        while 1:
-            time.sleep(1.0)
-        return
     if "c" in Cfg.opts:
         scan(modules, Cfg.mod, True, True)
         csl = Console()
