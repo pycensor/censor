@@ -2,7 +2,7 @@ NAME
 
 ::
 
-   CENSOR - basis to prosecute (OTP-CR-117/19)
+   CENSOR - basis to prosecute 
 
 
 DESCRIPTION
@@ -17,8 +17,7 @@ DESCRIPTION
     and display RSS feeds, take todo notes, keep a shopping list and
     log text.
 
-    CENSOR provides basis to prosecute (OTP-CR-117/19) king netherlands
-    for the crime of genocide at the ICC.
+    CENSOR provides basis to prosecute (OTP-CR-117/19)
 
     CENSOR is here to be some kind of backup in case of censorship.
 
