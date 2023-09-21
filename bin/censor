@@ -47,13 +47,13 @@ TIME = time.ctime(time.time()).replace("  ", " ")
 Cfg = Object()
 Cfg.cmd = ""
 Cfg.gets = Object()
-Cfg.mod = "bsc,err,flt,sts,thr,ver"
+Cfg.mod = "bsc,err,flt,mod,sts,thr"
 Cfg.name = "censor"
 Cfg.opts = ""
 Cfg.result = []
 Cfg.sets = Object()
-Cfg.slogan = "reinforcement degrades performance"
-Cfg.version = "4"
+Cfg.slogan = "basis to prosecute"
+Cfg.version = "5"
 Cfg.description = f"{Cfg.name.upper()} {Cfg.version} {Cfg.mod.upper()} {Cfg.slogan}"
 
 

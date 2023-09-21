@@ -51,6 +51,11 @@ USAGE
     $ censor cmd
     cmd,err,flt,sts,thr,upt
 
+    $ censor -a cmd
+
+    cfg,cmd,dpl,err,flt,met,mod,mre,
+    nme,pwd,rem,req,rss,sts,thr
+
     start a console
 
     $ censor -c
@@ -64,22 +69,21 @@ USAGE
     list of modules
 
     $ censor mod
-    bsc,err,flt,irc,log,mod,rss,shp,
-    sts,tdo,thr,udp
+    bsc,err,flt,irc,mod,req,rss,sts,thr
 
     to start irc, add mod=irc when
     starting
 
-    $ censor mod=irc -c
+    $ censor -c mod=irc
 
     to start rss, also add mod=rss
     when starting
 
-    $ censor mod=irc,rss -c
+    $ censor -c mod=irc,rss
 
     start as daemon
 
-    $ censor mod=irc,rss -d
+    $ censor -d mod=irc,rss
     $ 
 
 
@@ -112,22 +116,21 @@ COMMANDS
 
 ::
 
-    cmd - commands
     cfg - irc configuration
-    dlt - remove a user
-    dpl - sets display items
-    ftc - runs a fetching batch
-    fnd - find objects 
+    cmd - commands
+    dpl - items of the feed to display
+    err - show errors
     flt - instances registered
-    log - log some text
     met - add a user
+    mod - show available modules
     mre - displays cached output
-    nck - changes nick on irc
+    nme - display name of a feed
     pwd - sasl nickserv name/pass
     rem - removes a rss feed
+    req - request to the prosecutor
     rss - add a feed
-    slg - slogan
-    thr - show the running threads
+    sts - status
+    thr - show running threads
 
 
 SYSTEMD
@@ -137,7 +140,7 @@ SYSTEMD
     change <name> to the user running pipx
 
     [Unit]
-    Description=basis to prosecute (OTP-CR-117/19)
+    Description=CENSOR
     Requires=network.target
     After=network.target
 

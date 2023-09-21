@@ -14,7 +14,7 @@ import sys
 sys.path.insert(0, os.path.dirname(__file__))
 
 
-from . import bsc, err, flt, irc, log, mod, req, rss, shp, sts, tdo, thr
+from . import bsc, err, flt, irc, mod, req, rss, sts, thr
 
 
 def __dir__():
@@ -23,14 +23,11 @@ def __dir__():
             'err',
             'flt',
             'irc',
-            'log',
             'mod',
             'req',
             'rss',
-            'shp',
             'sts',
-            'tdo',
-            'thr', 
+            'thr'
            )
 
 
