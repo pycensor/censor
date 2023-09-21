@@ -4,7 +4,7 @@
 # pylint: disable=E0611,E0402,C0301,C0413,C0116,W0212
 
 
-"main"
+"basis to prosecute"
 
 
 import os
@@ -131,7 +131,7 @@ def main():
         Cfg.mod = ",".join(mods(modules.__path__[0]))
     if "v" in Cfg.opts:
         excepts.output = print
-        Cfg.description = f"{Cfg.name.upper()} {Cfg.version} {Cfg.mod.upper()} {Cfg.opts.upper()} {Cfg.slogan} !!"
+        Cfg.description = f"{Cfg.name.upper()} {Cfg.version} {Cfg.mod.upper()} {Cfg.opts.upper()}\n{Cfg.slogan}"
         debug(Cfg.description)
     if "d" in Cfg.opts:
         daemon()
