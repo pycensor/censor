@@ -83,6 +83,19 @@ def laps(seconds, short=True) -> str:
     return txt
 
 
+def mods(path):
+    res = []
+    for fnm in os.listdir(path):
+        if fnm.endswith("~"):
+            continue
+        if not fnm.endswith(".py"):
+            continue
+        if fnm in ["__main__.py", "__init__.py"]:
+            continue
+        res.append(fnm[:-3])
+    return sorted(res)
+
+
 def name(obj) -> str:
     typ = type(obj)
     if isinstance(typ, types.ModuleType):
@@ -97,17 +110,14 @@ def name(obj) -> str:
         return f'{obj.__class__.__name__}.{obj.__name__}'
     return None
 
-def mods(path):
-    res = []
-    for fnm in os.listdir(path):
-        if fnm.endswith("~"):
-            continue
-        if not fnm.endswith(".py"):
-            continue
-        if fnm in ["__main__.py", "__init__.py"]:
-            continue
-        res.append(fnm[:-3])
-    return sorted(res)
+
+def pidfile(path):
+    if os.path.exists(path):
+        os.unlink(path)
+    with open(path, "w", encoding="utf-8") as pid:
+        pid.write(str(os.getpid()) + "\n")
+        pid.flush()
+        pid.close()
 
 
 def skip(txt, skipping) -> bool:
@@ -127,3 +137,7 @@ def spl(txt) -> []:
 
 def strip(path) -> str:
     return os.sep.join(path.split(os.sep)[-4:])
+
+
+def touch(path):
+    pahtlib.Path(path).touch()

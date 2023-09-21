@@ -2,7 +2,7 @@ NAME
 
 ::
 
-   CENSOR - reinforcement degrades performance
+   CENSOR - basis to prosecute (OTP-CR-117/19)
 
 
 DESCRIPTION
@@ -17,13 +17,10 @@ DESCRIPTION
     and display RSS feeds, take todo notes, keep a shopping list and
     log text.
 
-    CENSOR provides a word based matcher to block results on IRc, this
-    to provide a output filter instead of using reinforcement to not
-    make such output. Without the reinforcement performance is there
-    and CENSOR as gatekeeper can block correct, but unwanted, answers.
+    CENSOR provides basis to prosecute (OTP-CR-117/19) king netherlands
+    for the crime of genocide at the ICC.
 
-
-    "Telling a recipe for suicide is criminal, telling recipes ain't."
+    CENSOR is here to be some kind of backup in case of censorship.
 
 
 SYNOPSIS
@@ -43,14 +40,11 @@ INSTALL
 
     $ pipx install censor
 
+
 USAGE
 
 
 ::
-
-    for ease of use, use an alias
-
-    $ alias censor="python3 -m censor"
 
     list of commands
 
@@ -140,10 +134,10 @@ SYSTEMD
 
 ::
 
-    chache <name> to the user running pipx
+    change <name> to the user running pipx
 
     [Unit]
-    Description=Reinforcement degrades performance.
+    Description=basis to prosecute (OTP-CR-117/19)
     Requires=network.target
     After=network.target
 
@@ -154,7 +148,7 @@ SYSTEMD
     Group=<name>
     PIDFile=censor.pid
     WorkingDirectory=/home/<name>/.censor
-    ExecStart=/home/<name>/.local/pipx/venvs/censor/bin/censor mod=irc,rss -d
+    ExecStart=/home/<name>/.local/pipx/venvs/censor/bin/censor -d
     RemainAfterExit=yes
 
     [Install]

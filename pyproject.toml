@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "censor"
-description = "reinforcement degrades performance"
+description = "bases to prosecute"
 version = "4"
 authors = [
     {name = "Censor", email = "pycensor@gmail.com" },
@@ -25,5 +25,41 @@ classifiers = [
 "bugs" = "https://github.com/pycensor/censor/issues"
 "source" = "https://github.com/pycensor/censor"
 
-[project.scripts]
-censor = "censor.__main__:wrapped"
+
+[tool.setuptools]
+packages = [
+            "censor",
+            "censor.modules"
+           ]
+zip-safe = true
+script-files = ["bin/censor"]
+
+
+
+[tool.setuptools.data-files]
+"share/censor" = ["README.rst",]
+
+
+"share/censor/img" = [
+                       "img/exlamation.jpg",
+                       "img/genocide.jpg",
+                       "img/skull3.png",
+                       "img/verbatim2.png",
+                       "img/wallpaper2.png",
+                       "img/wallpaper.png"
+                      ]
+
+"share/censor/pdf" = [
+                       "pdf/bevestigd.pdf",
+                       "pdf/EM_Ack_OTP-CR-117_19.pdf",
+                       "pdf/EM_T04_OTP-CR-117_19.pdf",
+                       "pdf/EM_T07_OTP-CR-117_19_001.pdf",
+                       "pdf/Kamer.pdf",
+                      ]
+
+[tool.setuptools.exclude-package-data]
+"*" = [
+       "env*",
+       "html*",
+       "test*"
+      ]
