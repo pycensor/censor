@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "censor"
-description = "bases to prosecute"
+description = "basis to prosecute (OTP-CR-117/19)"
 version = "4"
 authors = [
     {name = "Censor", email = "pycensor@gmail.com" },
@@ -35,27 +35,30 @@ zip-safe = true
 script-files = ["bin/censor"]
 
 
-
 [tool.setuptools.data-files]
-"share/censor" = ["README.rst",]
+"share/censor" = [
+                  "README.rst",
+                  "files/censor.service"
+                 ]
 
 
 "share/censor/img" = [
-                       "img/exlamation.jpg",
-                       "img/genocide.jpg",
-                       "img/skull3.png",
-                       "img/verbatim2.png",
-                       "img/wallpaper2.png",
-                       "img/wallpaper.png"
+                       "files/img/exclamation.jpg",
+                       "files/img/genocide.jpg",
+                       "files/img/skull3.png",
+                       "files/img/verbatim2.png",
+                       "files/img/wallpaper.png"
                       ]
 
+
 "share/censor/pdf" = [
-                       "pdf/bevestigd.pdf",
-                       "pdf/EM_Ack_OTP-CR-117_19.pdf",
-                       "pdf/EM_T04_OTP-CR-117_19.pdf",
-                       "pdf/EM_T07_OTP-CR-117_19_001.pdf",
-                       "pdf/Kamer.pdf",
+                       "files/pdf/bevestigd.pdf",
+                       "files/pdf/EM_Ack_OTP-CR-117_19.pdf",
+                       "files/pdf/EM_T04_OTP-CR-117_19.pdf",
+                       "files/pdf/EM_T07_OTP-CR-117_19_001.pdf",
+                       "files/pdf/Kamer.pdf",
                       ]
+
 
 [tool.setuptools.exclude-package-data]
 "*" = [

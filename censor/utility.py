@@ -140,4 +140,4 @@ def strip(path) -> str:
 
 
 def touch(path):
-    pahtlib.Path(path).touch()
+    pathlib.Path(path).touch()

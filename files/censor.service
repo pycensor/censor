@@ -1,5 +1,5 @@
 [Unit]
-Description=reinforcement degrades performance
+Description=CENSOR basis to prosecute (OTP-CR-117/19)
 Requires=network.target
 After=network.target
 
@@ -8,9 +8,10 @@ DynamicUser=True
 Type=forking
 User=bart
 Group=bart
-PIDFile=/home/bart/.censor/censor.pid
+PIDFile=censor.pid
 WorkingDirectory=/home/bart/.censor
-ExecStart=/home/bart/.local/pipx/venvs/censor/bin/censor -dv
+ExecStart=/home/bart/.local/pipx/venvs/censor/bin/censor -d
+RemainAfterExit=yes
 
 [Install]
 WantedBy=multi-user.target
