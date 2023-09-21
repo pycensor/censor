@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "censor"
-description = "basis to prosecute (OTP-CR-117/19)"
-version = "4"
+description = "basis to prosecute"
+version = "5"
 authors = [
     {name = "Censor", email = "pycensor@gmail.com" },
 ]
